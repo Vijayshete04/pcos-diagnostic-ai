@@ -1,0 +1,27 @@
+# Data Manipulation & Models
+pandas
+numpy
+scipy
+openpyxl
+scikit-learn
+xgboost
+lightgbm
+catboost
+
+# Visualization & Evaluation
+matplotlib
+seaborn
+plotly
+mlxtend
+
+# Backend (FastAPI)
+fastapi
+uvicorn
+pydantic
+joblib
+
+# Frontend (Streamlit) & AI
+streamlit
+requests
+python-dotenv
+groq
