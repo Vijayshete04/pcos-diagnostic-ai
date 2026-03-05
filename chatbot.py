@@ -8,7 +8,7 @@ load_dotenv()
 
 def run_pcos_chatbot(diagnosis_result, user_stats):
     st.write("---")
-    st.subheader("💬 Discuss Your Results with AI")
+    st.subheader("🤖 AI PCOS Assistant")
     
     # 1. Fetch API Key from .env
     api_key = os.getenv("GROQ_API_KEY")
