@@ -158,12 +158,12 @@ if st.button("🚀 Analyze My Health Data"):
                     st.info("✅ Your indicators appear within the normal range. Continue maintaining a healthy lifestyle!")
             
             # Advice section
-            with st.expander("See Recommendations"):
-                st.write("""
-                * **Diet:** Increase fiber and reduce processed sugars.
-                * **Activity:** Aim for 30 mins of moderate activity 5x a week.
-                * **Monitor:** Keep a log of your menstrual cycle variations.
-                """)
+            # with st.expander("See Recommendations"):
+            #     st.write("""
+            #     * **Diet:** Increase fiber and reduce processed sugars.
+            #     * **Activity:** Aim for 30 mins of moderate activity 5x a week.
+            #     * **Monitor:** Keep a log of your menstrual cycle variations.
+            #     """)
         else:
             st.error(f"Server Error: {response.text}")
     except Exception as e:
@@ -178,6 +178,8 @@ if st.session_state.get('show_chat'):
     # Prepare the stats to give context to the AI
     patient_info = {
         "age": age,
+        "height_cm": height,
+        "weight_kg": weight,
         "bmi": float(weight / ((height/100)**2))
     }
     
