@@ -6,68 +6,73 @@ colorTo: red
 sdk: docker
 app_port: 7860
 ---
-🩺 PCOS Advanced Diagnostic & Assistant System
-An end-to-end healthcare solution that combines Machine Learning for clinical screening and Generative AI for patient support. This system analyzes 40+ clinical biomarkers to predict PCOS and provides an instant, context-aware chatbot for patient guidance.
+🌸 PCOS Advanced Diagnostic & Assistant System
+
+An End-to-End Clinical Screening & Patient Support Ecosystem
+
+This system bridges the gap between raw clinical data and patient understanding. By analyzing over 40 clinical biomarkers, it provides high-accuracy screening while offering a context-aware AI assistant to guide patients through their results.
 
 🚀 Key Features
-Predictive Diagnostics: Uses a high-accuracy ML model (FastAPI backend) to analyze hormonal, physical, and clinical markers.
 
-Real-time AI Assistant: A specialized chatbot powered by Llama 3.3 (via Groq API) that provides personalized lifestyle, diet, and exercise advice based on the user's specific results.
+Predictive Diagnostics: A high-accuracy Random Forest engine (FastAPI) that analyzes hormonal, physical, and metabolic markers.
 
-Clinical Marker Analysis: Tracks complex variables including LH/FSH ratios, Follicle counts, and BMI.
+Llama 3.3 Intelligence: Integrated via Groq API for sub-second responses, providing personalized lifestyle, diet, and exercise advice.
 
-Modern UI: A responsive Streamlit dashboard with interactive metrics and streaming chat responses.
+Clinical Deep-Dive: Specialized tracking of $LH/FSH$ ratios, follicle counts (Left/Right), and metabolic indicators.
 
-Containerized: Fully Dockerized for seamless deployment.
+Hugging Face Integration: Live deployment for instant clinical testing and community feedback.
 
 🏗️ Technical Architecture
-Frontend: Streamlit (Python) - Handles data collection and real-time visualization.
 
-ML Backend: FastAPI - Hosts the trained model and processes diagnostic payloads.
+The system is built on a decoupled architecture to ensure scalability and low latency:
 
-Intelligence: Groq Cloud API - Powers the Llama 3.3 model for low-latency patient conversation.
+Frontend	  Streamlit	                    Responsive UI & Interactive Data Visualization
+ML Engine	  FastAPI + Scikit-Learn	    High-performance inference for diagnostic payloads
+Brain	      Llama 3.3 (Groq)	Context-    aware generative AI for patient counseling
+Deployment	  Docker & Hugging Face	        Containerized reliability and public accessibility
 
-Security: Environment-based secrets management via .env and python-dotenv.
+📊 Model Evaluation
+We evaluated five different algorithms to ensure the highest diagnostic sensitivity (crucial for healthcare):
 
-📊 Model Performance
-I compared 5 different Machine Learning models to find the most efficient diagnostic engine:
+CatBoostClassifier(Selected): Best balance of accuracy and feature importance ranking.
 
-Random Forest (Selected)
+XGBoost: High performance but required more hyperparameter tuning.
 
-Support Vector Machine (SVM)
+SVM: Effective in high-dimensional spaces but slower on inference.
 
-Logistic Regression
+Logistic Regression: Used as a baseline.
 
-K-Nearest Neighbors (KNN)
+KNN: Useful for clustering but sensitive to outliers in hormonal data.
 
-XGBoost
 
-View the interactive performance charts here: [nbviewer link]
+🛠️ Quick Start & Deployment
 
-🛠️ Installation & Setup
-1. Clone the Repository
-Bash
-git clone https://github.com/yourusername/PCOS-Diagnosis-AI.git
+1. Live Demo
+Experience the system immediately on Hugging Face Spaces:
+👉 https://huggingface.co/spaces/Vijayshete04/pcos-diagnostic-ai
+
+2. Local Installation
+
+# Clone the repository
+git clone https://github.com/Vijayshete04/pcos-diagnostic-ai.git
 cd PCOS-Diagnosis-AI
-2. Environment Setup
-Create a .env file in the root directory:
 
-Plaintext
-GROQ_API_KEY=your_groq_api_key_here
-3. Run via Docker (Recommended)
-Bash
+# Set up your environment variables (.env)
+echo "GROQ_API_KEY=your_key_here" > .env
+
+# Run via Docker
 docker build -t pcos-app .
 docker run -p 8501:8501 --env-file .env pcos-app
+
 📂 Repository Structure
-app.py: Main Streamlit UI and dashboard logic.
+app.py: The "Heart" — Streamlit logic and dashboard metrics.
 
-chatbot.py: Context-aware LLM logic and Groq API integration.
+chatbot.py: The "Voice" — Llama 3.3 logic and Groq integration.
 
-main.py: FastAPI backend script for ML model inference.
+main.py: The "Brain" — FastAPI backend for ML model serving.
 
-Dockerfile: Containerization instructions.
+model/: Trained weights and pre-processing pipelines.
 
-data/: Contains clinical datasets (Infertility and non-infertility).
+requirements.txt: Comprehensive list of dependencies including groq, fastapi, and scikit-learn.
 
-⚠️ Medical Disclaimer
-This system is an AI-driven screening tool, not a medical diagnosis. The results should be used for educational purposes and as a prompt to seek professional medical advice from a certified gynecologist.
+Disclaimer: This tool is for educational and screening assistance purposes only. It is not a replacement for professional medical diagnosis.
