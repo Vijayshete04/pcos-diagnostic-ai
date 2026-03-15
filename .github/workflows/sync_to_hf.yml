@@ -1,12 +1,17 @@
-name: Sync to Hugging Face Hub
+name: Sync and Keep Alive Hugging Face Hub
+
 on:
   push:
     branches: [main]
-  # Allows you to run this workflow manually from the Actions tab
+  # Runs every hour to prevent the Space from sleeping
+  schedule:
+    - cron: '0 * * * *'
   workflow_dispatch:
 
 jobs:
   sync-to-hub:
+    # This only runs when you push code
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -18,9 +23,14 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          # Configure Git LFS on the runner
           git lfs install
-          # Use a manual remote to avoid URL masking issues
           git remote add hf https://Vijayshete04:$HF_TOKEN@huggingface.co/spaces/Vijayshete04/pcos-diagnostic-ai
-          # Force push to overwrite the broken history on the Space
           git push --force hf main
+
+  keep-alive:
+    # This runs on the schedule OR after a push
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Hugging Face Space
+        run: |
+          curl -I -L -A "Mozilla/5.0" https://huggingface.co/spaces/Vijayshete04/pcos-diagnostic-ai
